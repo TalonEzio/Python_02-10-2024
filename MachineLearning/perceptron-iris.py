@@ -44,6 +44,7 @@ class Perceptron:
                 y_predict = self.unit_step(weighted_sum)
 
                 error = y_true - y_predict
+
                 total_error += abs(error)
 
                 if error != 0:

@@ -47,8 +47,10 @@ class Perceptron:
         return 1 if value > 0 else 0
 
     def train(self, input_list, epochs):
+
         for epoch in range(epochs):
             total_error = 0
+
             for input_obj in input_list:
                 x1 = input_obj.X
                 x2 = input_obj.Y
@@ -58,12 +60,15 @@ class Perceptron:
                 y_predict = self.unit_step(weighted_sum)
 
                 error = y_true - y_predict
-                total_error += abs(error)
+                total_error += error
 
                 if error != 0:
                     self.W1 += self.learning_rate * error * x1
                     self.W2 += self.learning_rate * error * x2
                     self.Bias += self.learning_rate * error
+
+
+                print(f'error = {error}, total error = {total_error}')
 
             if total_error == 0:
                 break
